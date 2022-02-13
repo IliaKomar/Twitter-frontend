@@ -30,8 +30,8 @@ export const useStylesSignIn = makeStyles((theme) => ({
         left: "30%",
         top: "50%",
         transform: "translate(-50%, -50%)",
-        width: "300%",
-        height: "300%",
+        width: "310%",
+        height: "310%",
     },
     blueSideListInfo: {
         position: "relative",
@@ -83,7 +83,7 @@ export const useStylesSignIn = makeStyles((theme) => ({
     },
 }));
 
-const SignIn = () => {
+export const SignIn: React.FC = (): React.ReactElement => {
     const classes = useStylesSignIn();
     const [visibleModal, setVisibleModal] = useState<"signIn" | "signUp">();
     const handleClickOpenSignIn = (): void => {
@@ -252,5 +252,3 @@ const SignIn = () => {
         </div>
     );
 };
-
-export default SignIn;
