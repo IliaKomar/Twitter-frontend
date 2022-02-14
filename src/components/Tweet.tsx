@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Paper, Grid, Avatar, Typography, IconButton } from '@material-ui/core';
+import { Paper, Avatar, Typography, IconButton } from '@material-ui/core';
 
 import CommentIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
 import RepostIcon from '@material-ui/icons/RepeatOutlined';
@@ -22,49 +22,45 @@ interface TweetProps {
 const Tweet: React.FC<TweetProps> = ({ styles, text, user }: TweetProps): React.ReactElement => {
     return (
         <Paper className={classNames(styles.tweet, styles.tweetsHeader)} variant='outlined'>
-            <Grid container spacing={3}>
-                <Grid item xs={1}>
-                    <Avatar
-                        alt={`Users avatar - ${user.fullname}`}
-                        src={user.avatarUrl}
-                        className={styles.tweetAvatar}
-                    />
-                </Grid>
-                <Grid item xs={11}>
-                    <Typography>
-                        <b>{user.fullname}</b>
-                        <span className={styles.tweetUserName}>@{user.username}</span>&nbsp;
-                        <span className={styles.tweetUserName}>-</span>&nbsp;
-                        <span className={styles.tweetUserName}>1 h</span>
-                    </Typography>
-                    <Typography variant='body1' gutterBottom>
-                        {text}
-                    </Typography>
-                    <div className={styles.tweetFooter}>
-                        <div>
-                            <IconButton>
-                                <CommentIcon className={styles.tweetButtons} />
-                            </IconButton>
-                            <span>1</span>
-                        </div>
-                        <div>
-                            <IconButton>
-                                <RepostIcon className={styles.tweetButtons} />
-                            </IconButton>
-                        </div>
-                        <div>
-                            <IconButton>
-                                <LikeIcon className={styles.tweetButtons} />
-                            </IconButton>
-                        </div>
-                        <div>
-                            <IconButton>
-                                <ShareIcon className={styles.tweetButtons} />
-                            </IconButton>
-                        </div>
+            <Avatar
+                alt={`Users avatar - ${user.fullname}`}
+                src={user.avatarUrl}
+                className={styles.tweetAvatar}
+            />
+            <div>
+                <Typography>
+                    <b>{user.fullname}</b>
+                    <span className={styles.tweetUserName}>@{user.username}</span>&nbsp;
+                    <span className={styles.tweetUserName}>-</span>&nbsp;
+                    <span className={styles.tweetUserName}>1 h</span>
+                </Typography>
+                <Typography variant='body1' gutterBottom>
+                    {text}
+                </Typography>
+                <div className={styles.tweetFooter}>
+                    <div>
+                        <IconButton>
+                            <CommentIcon className={styles.tweetButtons} />
+                        </IconButton>
+                        <span>1</span>
                     </div>
-                </Grid>
-            </Grid>
+                    <div>
+                        <IconButton>
+                            <RepostIcon className={styles.tweetButtons} />
+                        </IconButton>
+                    </div>
+                    <div>
+                        <IconButton>
+                            <LikeIcon className={styles.tweetButtons} />
+                        </IconButton>
+                    </div>
+                    <div>
+                        <IconButton>
+                            <ShareIcon className={styles.tweetButtons} />
+                        </IconButton>
+                    </div>
+                </div>
+            </div>
         </Paper>
     )
 }
