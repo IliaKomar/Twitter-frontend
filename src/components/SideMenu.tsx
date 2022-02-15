@@ -1,6 +1,8 @@
-import React from 'react';
-import { Typography, IconButton, Button, Hidden } from '@material-ui/core';
+import React, { useState } from 'react';
 
+import ModalBlock from './ModalBlock';
+
+import { Typography, IconButton, Button, Hidden } from '@material-ui/core';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import SearchIcon from '@material-ui/icons/Search';
 import NotificationsIcon from '@material-ui/icons/NotificationsNoneOutlined';
@@ -10,13 +12,23 @@ import ListIcon from '@material-ui/icons/ListAltOutlined';
 import UserIcon from '@material-ui/icons/PersonOutline';
 import CreateIcon from '@material-ui/icons/Create';
 
-import { useHomeStyles } from '../pages/Home';
-
+import { useHomeStyles } from '../pages/Home/theme';
+import AddTweetForm from './AddTweetForm';
 interface SideMenuProps {
     styles: ReturnType<typeof useHomeStyles>
 }
 
 const SideMenu: React.FC<SideMenuProps> = ({ styles }: SideMenuProps): React.ReactElement => {
+    const [isVisibleModal, setIsVisibleModal] = useState<boolean>(false);
+
+    const handleCloseAddTweetModal = (): void => {
+        setIsVisibleModal(false)
+    };
+
+    const handleOpenAddTweetModal = (): void => {
+        setIsVisibleModal(true)
+    };
+
     return (
         <ul className={styles.sideMenuList}>
             <li className={styles.sideMenuListItem}>
@@ -73,12 +85,27 @@ const SideMenu: React.FC<SideMenuProps> = ({ styles }: SideMenuProps): React.Rea
                 </div>
             </li>
             <li className={styles.sideMenuListItem}>
-                <Button className={styles.sideMenuTweetButton} variant='contained' color='primary' fullWidth>
+                <Button
+                    className={styles.sideMenuTweetButton}
+                    variant='contained'
+                    color='primary'
+                    fullWidth
+                    onClick={handleOpenAddTweetModal}
+                >
                     <Hidden smDown>Tweet</Hidden>
                     <Hidden mdUp>
                         <CreateIcon />
                     </Hidden>
                 </Button>
+                <ModalBlock
+                    title='First tweet!'
+                    visible={isVisibleModal}
+                    onClose={handleCloseAddTweetModal}
+                >
+                    <div style={{ width: 550 }}>
+                        <AddTweetForm maxRows={15} styles={styles} />
+                    </div>
+                </ModalBlock>
             </li>
         </ul>
     )

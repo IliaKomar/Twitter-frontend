@@ -5,7 +5,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
 import MessagIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import Button from "@material-ui/core/Button";
-import ModalDialog from "../components/ModalDialog";
+import ModalBlock from "../components/ModalBlock";
 
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControl from "@material-ui/core/FormControl";
@@ -153,7 +153,7 @@ export const SignIn: React.FC = (): React.ReactElement => {
                     >
                         Login
                     </Button>
-                    <ModalDialog
+                    <ModalBlock
                         visible={visibleModal === "signUp"}
                         onClose={handleCloseModal}
                         title="Create an account"
@@ -205,8 +205,8 @@ export const SignIn: React.FC = (): React.ReactElement => {
                                 </Button>
                             </FormGroup>
                         </FormControl>
-                    </ModalDialog>
-                    <ModalDialog
+                    </ModalBlock>
+                    <ModalBlock
                         visible={visibleModal === "signIn"}
                         onClose={handleCloseModal}
                         title="Log into account"
@@ -246,7 +246,7 @@ export const SignIn: React.FC = (): React.ReactElement => {
                                 </Button>
                             </FormGroup>
                         </FormControl>
-                    </ModalDialog>
+                    </ModalBlock>
                 </div>
             </section>
         </div>

@@ -1,4 +1,5 @@
 import React from "react";
+
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -6,14 +7,17 @@ import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import OutsideClickHandler from 'react-outside-click-handler';
 
-interface ModalDialogProps {
+import { useStylesSignIn } from '../pages/SignIn';
+
+interface ModalBlockProps {
+    title?: string;
     children: React.ReactNode;
-    title: string;
-    visible: boolean;
+    styles?: ReturnType<typeof useStylesSignIn>;
+    visible?: boolean;
     onClose: () => void;
 }
 
-const ModalDialog: React.FC<ModalDialogProps> = ({
+const ModalBlock: React.FC<ModalBlockProps> = ({
     title,
     children,
     visible = false,
@@ -41,4 +45,4 @@ const ModalDialog: React.FC<ModalDialogProps> = ({
     );
 };
 
-export default ModalDialog;
+export default ModalBlock;

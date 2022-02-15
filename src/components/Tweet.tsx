@@ -1,14 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Paper, Avatar, Typography, IconButton } from '@material-ui/core';
 
+import { Paper, Avatar, Typography, IconButton } from '@material-ui/core';
 import CommentIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
 import RepostIcon from '@material-ui/icons/RepeatOutlined';
 import LikeIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import ShareIcon from '@material-ui/icons/ReplyOutlined';
 
-import { useHomeStyles } from '../pages/Home';
-
+import { useHomeStyles } from '../pages/Home/theme';
 interface TweetProps {
     styles: ReturnType<typeof useHomeStyles>;
     user: {
@@ -29,7 +28,7 @@ const Tweet: React.FC<TweetProps> = ({ styles, text, user }: TweetProps): React.
             />
             <div>
                 <Typography>
-                    <b>{user.fullname}</b>
+                    <b>{user.fullname}</b>&nbsp;
                     <span className={styles.tweetUserName}>@{user.username}</span>&nbsp;
                     <span className={styles.tweetUserName}>-</span>&nbsp;
                     <span className={styles.tweetUserName}>1 h</span>
